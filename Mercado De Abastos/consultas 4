@@ -1,0 +1,47 @@
+
+Consultas
+
+select
+propietario.NOMBRE_PROPIETARIO,
+propietario.APELLIDO_PROPIETARIO,
+count (arrendatario.id_arrendatario) as cantidad_de_arriendo
+from propietario
+inner join plaza on plaza.id_propietario = propietario.id_propietario
+inner join arriendo on arriendo.id_plaza = plaza.id_plaza
+inner join arrendatario on arrendatario.id_arrendatario = arriendo.id_arrendatario
+group by propietario.NOMBRE_PROPIETARIO,propietario.APELLIDO_PROPIETARIO
+
+/*consulta number tu cuantas veces se ah solicitado cada uno de los  servicio */
+
+select
+servicio.descripcion_servicio,
+Count(plaza.numero_plaza)
+
+from servicio
+
+inner join plaza_servicios on plaza_servicios.id_servicio = servicio.id_servicio
+
+inner join plaza on plaza.id_plaza = plaza_servicios.id_plaza
+group by servicio.descripcion_servicio
+
+
+
+/*consulta 4 Cuantos miembros tiene la directiva del mercado*/
+select
+mercado.nombre_mercado,
+directiva.nombre_directiva,
+count (miembro.nombre_miembro)
+from mercado
+inner join directiva on directiva.id_directiva = mercado.id_directiva
+inner join miembro on miembro.id_directiva = directiva.id_directiva
+group by mercado.nombre_mercado, directiva.nombre_directiva
+
+/*cuales miembros son parte de la directiva y cual es su cargo */
+
+select 
+directiva.nombre_directiva,
+miembro.nombre_miembro, 
+cargo.descripcion_cargo
+from directiva
+inner join miembro on directiva.id_directiva = miembro.id_directiva
+inner join cargo on miembro.id_cargo = cargo.id_cargo

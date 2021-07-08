@@ -1,0 +1,346 @@
+/*==============================================================*/
+/* DBMS name:      PostgreSQL 8                                 */
+/* Created on:     4/7/2021 20:41:13                            */
+/*==============================================================*/
+
+
+drop table ARRENDATARIO;
+
+drop table ARRIENDO;
+
+drop table CARGO;
+
+drop table CLIENTE;
+
+drop table COMPRA;
+
+drop table COMPRA_PRODUCTO;
+
+drop table DIRECTIVA;
+
+drop table MERCADO;
+
+drop table MIEMBRO;
+
+drop table PLAZA;
+
+drop table PLAZA_SERVICIOS;
+
+drop table PRODUCTO;
+
+drop table PRODUCTO_VENTA;
+
+drop table PROPIETARIO;
+
+drop table PROVEEDOR;
+
+drop table SERVICIO;
+
+drop table VENTA;
+
+/*==============================================================*/
+/* Table: ARRENDATARIO                                          */
+/*==============================================================*/
+create table ARRENDATARIO (
+   ID_ARRENDATARIO      INT4                 not null,
+   NOMBRE_ARRENDATARIO  VARCHAR(100)         null,
+   APELLIDO_ARRENDATARIO VARCHAR(100)         null,
+   CEDULA_ARRENDATARIO  VARCHAR(50)          null,
+   TELEFONO_ARRENDATARIO VARCHAR(50)          null,
+   CORREO_ARRENDATARIO  VARCHAR(100)         null,
+   constraint PK_ARRENDATARIO primary key (ID_ARRENDATARIO)
+);
+
+/*==============================================================*/
+/* Table: ARRIENDO                                              */
+/*==============================================================*/
+create table ARRIENDO (
+   ID_ARRIENDO          INT4                 not null,
+   ID_PLAZA             INT4                 null,
+   ID_ARRENDATARIO      INT4                 null,
+   INICIO_ARRIENDO      DATE                 null,
+   FIN_ARRIENDO         DATE                 null,
+   VALOR_ARRIENDO       DECIMAL              null,
+   constraint PK_ARRIENDO primary key (ID_ARRIENDO)
+);
+
+/*==============================================================*/
+/* Table: CARGO                                                 */
+/*==============================================================*/
+create table CARGO (
+   ID_CARGO             INT4                 not null,
+   DESCRIPCION_CARGO    VARCHAR(100)         null,
+   constraint PK_CARGO primary key (ID_CARGO)
+);
+
+/*==============================================================*/
+/* Table: CLIENTE                                               */
+/*==============================================================*/
+create table CLIENTE (
+   ID_CLIENTE           INT4                 not null,
+   NOMBRE_CLIENTE       VARCHAR(100)         null,
+   APELLIDO_CLIENTE     VARCHAR(100)         null,
+   CEDULA_CLIENTE       VARCHAR(100)         null,
+   TELEFONO_CLIENTE     VARCHAR(50)          null,
+   CORREO_CLIENTE       VARCHAR(100)         null,
+   constraint PK_CLIENTE primary key (ID_CLIENTE)
+);
+
+/*==============================================================*/
+/* Table: COMPRA                                                */
+/*==============================================================*/
+create table COMPRA (
+   ID_COMPRA            INT4                 not null,
+   ID_PLAZA             INT4                 null,
+   ID_PROVEEDOR         INT4                 null,
+   FECHA_COMPRA         DATE                 null,
+   SUBTOTAL_COMPRA      DECIMAL              null,
+   IVA_COMPRA           DECIMAL              null,
+   TOTAL_COMPRA         DECIMAL              null,
+   constraint PK_COMPRA primary key (ID_COMPRA)
+);
+
+/*==============================================================*/
+/* Table: COMPRA_PRODUCTO                                       */
+/*==============================================================*/
+create table COMPRA_PRODUCTO (
+   ID_PRODUCTO          INT4                 not null,
+   ID_COMPRA            INT4                 not null,
+   CANTIDAD_P           INT4                 null,
+   TOTAL_P              DECIMAL              null,
+   constraint PK_COMPRA_PRODUCTO primary key (ID_PRODUCTO, ID_COMPRA)
+);
+
+/*==============================================================*/
+/* Table: DIRECTIVA                                             */
+/*==============================================================*/
+create table DIRECTIVA (
+   ID_DIRECTIVA         INT4                 not null,
+   NOMBRE_DIRECTIVA     VARCHAR(100)         null,
+   CORREO_DIRECTIVA     VARCHAR(100)         null,
+   constraint PK_DIRECTIVA primary key (ID_DIRECTIVA)
+);
+
+/*==============================================================*/
+/* Table: MERCADO                                               */
+/*==============================================================*/
+create table MERCADO (
+   ID_MERCADO           INT4                 not null,
+   ID_DIRECTIVA         INT4                 null,
+   NOMBRE_MERCADO       VARCHAR(100)         null,
+   DIRECCION_MERCADO    VARCHAR(500)         null,
+   FUNDACION_MERCADO    DATE                 null,
+   constraint PK_MERCADO primary key (ID_MERCADO)
+);
+
+/*==============================================================*/
+/* Table: MIEMBRO                                               */
+/*==============================================================*/
+create table MIEMBRO (
+   ID_MIEMBRO           INT4                 not null,
+   ID_DIRECTIVA         INT4                 null,
+   ID_CARGO             INT4                 null,
+   ID_MERCADO           INT4                 null,
+   NOMBRE_MIEMBRO       VARCHAR(100)         null,
+   APELLIDO_MIEMBRO     VARCHAR(100)         null,
+   CEDULA_MIEMBRO       VARCHAR(100)         null,
+   TELEFONO_MIEMBRO     VARCHAR(50)          null,
+   CORREO_MIEMBRO       VARCHAR(100)         null,
+   constraint PK_MIEMBRO primary key (ID_MIEMBRO)
+);
+
+/*==============================================================*/
+/* Table: PLAZA                                                 */
+/*==============================================================*/
+create table PLAZA (
+   ID_PLAZA             INT4                 not null,
+   ID_MERCADO           INT4                 null,
+   ID_PROPIETARIO       INT4                 null,
+   NOMBRE_PLAZA         VARCHAR(100)         null,
+   NUMERO_PLAZA         VARCHAR(100)         null,
+   UBICACION_PLAZA      VARCHAR(100)         null,
+   constraint PK_PLAZA primary key (ID_PLAZA)
+);
+
+/*==============================================================*/
+/* Table: PLAZA_SERVICIOS                                       */
+/*==============================================================*/
+create table PLAZA_SERVICIOS (
+   ID_SERVICIO          INT4                 not null,
+   ID_PLAZA             INT4                 not null,
+   CANTIDAD_PS          INT4                 null,
+   TOTAL_PS             DECIMAL              null,
+   constraint PK_PLAZA_SERVICIOS primary key (ID_SERVICIO, ID_PLAZA)
+);
+
+/*==============================================================*/
+/* Table: PRODUCTO                                              */
+/*==============================================================*/
+create table PRODUCTO (
+   ID_PRODUCTO          INT4                 not null,
+   ID_PLAZA             INT4                 null,
+   NOMBRE_PRODUCTO      VARCHAR(100)         null,
+   PRECIO_PRODUCTO      DECIMAL              null,
+   CANTIDAD_PRODUCTO    INT4                 null,
+   constraint PK_PRODUCTO primary key (ID_PRODUCTO)
+);
+
+/*==============================================================*/
+/* Table: PRODUCTO_VENTA                                        */
+/*==============================================================*/
+create table PRODUCTO_VENTA (
+   ID_PRODUCTO          INT4                 not null,
+   ID_VENTA             INT4                 not null,
+   CANTIDAD_PV          INT4                 null,
+   TOTAL_PV             DECIMAL              null,
+   constraint PK_PRODUCTO_VENTA primary key (ID_PRODUCTO, ID_VENTA)
+);
+
+/*==============================================================*/
+/* Table: PROPIETARIO                                           */
+/*==============================================================*/
+create table PROPIETARIO (
+   ID_PROPIETARIO       INT4                 not null,
+   NOMBRE_PROPIETARIO   VARCHAR(100)         null,
+   APELLIDO_PROPIETARIO VARCHAR(100)         null,
+   CEDULA_PROPIETARIO   VARCHAR(50)          null,
+   TELEFONO_PROPIETARIO VARCHAR(50)          null,
+   CORREO_PROPIETARIO   VARCHAR(100)         null,
+   constraint PK_PROPIETARIO primary key (ID_PROPIETARIO)
+);
+
+/*==============================================================*/
+/* Table: PROVEEDOR                                             */
+/*==============================================================*/
+create table PROVEEDOR (
+   ID_PROVEEDOR         INT4                 not null,
+   NOMBRE_PROVEEDOR     VARCHAR(100)         null,
+   DIRECCION_PROVEEDOR  VARCHAR(100)         null,
+   TELEFONO_PROVEEDOR   VARCHAR(50)          null,
+   CORREO_PROVEEDOR     VARCHAR(100)         null,
+   constraint PK_PROVEEDOR primary key (ID_PROVEEDOR)
+);
+
+/*==============================================================*/
+/* Table: SERVICIO                                              */
+/*==============================================================*/
+create table SERVICIO (
+   ID_SERVICIO          INT4                 not null,
+   ID_MIEMBRO           INT4                 null,
+   DESCRIPCION_SERVICIO VARCHAR(100)         null,
+   constraint PK_SERVICIO primary key (ID_SERVICIO)
+);
+
+/*==============================================================*/
+/* Table: VENTA                                                 */
+/*==============================================================*/
+create table VENTA (
+   ID_VENTA             INT4                 not null,
+   ID_PLAZA             INT4                 null,
+   ID_CLIENTE           INT4                 null,
+   FECHA_VENTA          DATE                 null,
+   SUBTOTAL_VENTA       DECIMAL              null,
+   IVA_VENTA            DECIMAL              null,
+   TOTAL_VENTA          DECIMAL              null,
+   constraint PK_VENTA primary key (ID_VENTA)
+);
+
+alter table ARRIENDO
+   add constraint FK_ARRIENDO_ARRIENDO__ARRENDAT foreign key (ID_ARRENDATARIO)
+      references ARRENDATARIO (ID_ARRENDATARIO)
+      on delete restrict on update restrict;
+
+alter table ARRIENDO
+   add constraint FK_ARRIENDO_PLAZA_ARR_PLAZA foreign key (ID_PLAZA)
+      references PLAZA (ID_PLAZA)
+      on delete restrict on update restrict;
+
+alter table COMPRA
+   add constraint FK_COMPRA_COMPRA_PR_PROVEEDO foreign key (ID_PROVEEDOR)
+      references PROVEEDOR (ID_PROVEEDOR)
+      on delete restrict on update restrict;
+
+alter table COMPRA
+   add constraint FK_COMPRA_PLAZA_COM_PLAZA foreign key (ID_PLAZA)
+      references PLAZA (ID_PLAZA)
+      on delete restrict on update restrict;
+
+alter table COMPRA_PRODUCTO
+   add constraint FK_COMPRA_P_COMPRA_PR_PRODUCTO foreign key (ID_PRODUCTO)
+      references PRODUCTO (ID_PRODUCTO)
+      on delete restrict on update restrict;
+
+alter table COMPRA_PRODUCTO
+   add constraint FK_COMPRA_P_COMPRA_PR_COMPRA foreign key (ID_COMPRA)
+      references COMPRA (ID_COMPRA)
+      on delete restrict on update restrict;
+
+alter table MERCADO
+   add constraint FK_MERCADO_MERCADO_D_DIRECTIV foreign key (ID_DIRECTIVA)
+      references DIRECTIVA (ID_DIRECTIVA)
+      on delete restrict on update restrict;
+
+alter table MIEMBRO
+   add constraint FK_MIEMBRO_DIRECTIVA_DIRECTIV foreign key (ID_DIRECTIVA)
+      references DIRECTIVA (ID_DIRECTIVA)
+      on delete restrict on update restrict;
+
+alter table MIEMBRO
+   add constraint FK_MIEMBRO_MERCADO_M_MERCADO foreign key (ID_MERCADO)
+      references MERCADO (ID_MERCADO)
+      on delete restrict on update restrict;
+
+alter table MIEMBRO
+   add constraint FK_MIEMBRO_MIEMBRO_C_CARGO foreign key (ID_CARGO)
+      references CARGO (ID_CARGO)
+      on delete restrict on update restrict;
+
+alter table PLAZA
+   add constraint FK_PLAZA_MERCADO_P_MERCADO foreign key (ID_MERCADO)
+      references MERCADO (ID_MERCADO)
+      on delete restrict on update restrict;
+
+alter table PLAZA
+   add constraint FK_PLAZA_PLAZA_PRO_PROPIETA foreign key (ID_PROPIETARIO)
+      references PROPIETARIO (ID_PROPIETARIO)
+      on delete restrict on update restrict;
+
+alter table PLAZA_SERVICIOS
+   add constraint FK_PLAZA_SE_PLAZA_SER_SERVICIO foreign key (ID_SERVICIO)
+      references SERVICIO (ID_SERVICIO)
+      on delete restrict on update restrict;
+
+alter table PLAZA_SERVICIOS
+   add constraint FK_PLAZA_SE_PLAZA_SER_PLAZA foreign key (ID_PLAZA)
+      references PLAZA (ID_PLAZA)
+      on delete restrict on update restrict;
+
+alter table PRODUCTO
+   add constraint FK_PRODUCTO_PRODUCTO__PLAZA foreign key (ID_PLAZA)
+      references PLAZA (ID_PLAZA)
+      on delete restrict on update restrict;
+
+alter table PRODUCTO_VENTA
+   add constraint FK_PRODUCTO_PRODUCTO__PRODUCTO foreign key (ID_PRODUCTO)
+      references PRODUCTO (ID_PRODUCTO)
+      on delete restrict on update restrict;
+
+alter table PRODUCTO_VENTA
+   add constraint FK_PRODUCTO_PRODUCTO__VENTA foreign key (ID_VENTA)
+      references VENTA (ID_VENTA)
+      on delete restrict on update restrict;
+
+alter table SERVICIO
+   add constraint FK_SERVICIO_MIEMBRO_S_MIEMBRO foreign key (ID_MIEMBRO)
+      references MIEMBRO (ID_MIEMBRO)
+      on delete restrict on update restrict;
+
+alter table VENTA
+   add constraint FK_VENTA_CLIENTE_V_CLIENTE foreign key (ID_CLIENTE)
+      references CLIENTE (ID_CLIENTE)
+      on delete restrict on update restrict;
+
+alter table VENTA
+   add constraint FK_VENTA_PLAZA_VEN_PLAZA foreign key (ID_PLAZA)
+      references PLAZA (ID_PLAZA)
+      on delete restrict on update restrict;

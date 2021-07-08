@@ -1,0 +1,119 @@
+/*CARGO*/
+insert into CARGO values(1,'Presidente');
+insert into CARGO values(2,'Vice-presidente');
+insert into CARGO values(3,'Tesorero');
+insert into CARGO values(4,'Empleado');
+insert into CARGO values(5,'Guardia');
+insert into CARGO values(6,'Mantenimiento');
+
+
+/*DIRECTIVA*/
+insert into DIRECTIVA values(2,'Directiva2019','presidente@gmail.com');
+insert into DIRECTIVA values(3,'Directiva2020','presidente@gmail.com');
+
+/*MERCADO*/
+insert into MERCADO values(1,1,'Mercado Central', 'DIRECCION', '20/05/2000');
+
+/*MIEMBRO*/
+insert into MIEMBRO values(1,1,1,1,'Julio', 'Mero', '12306846', '099834442', 'jmero@gmail.com');
+insert into MIEMBRO values(2,1,2,1,'Jose', 'Lucas', '12306846', '099834332', 'jlucas@gmail.com');
+insert into MIEMBRO values(3,1,3,1,'Bruno', 'Delgado', '12306846', '099834322', 'bdelgado@gmail.com');
+insert into MIEMBRO values(4,1,5,1,'Abel', 'Mera', '12306846', '099834532', 'Amera@gmail.com');
+insert into MIEMBRO values(5,1,4,1,'Wendy', 'Mero', '12306846', '099834512', 'wmero@gmail.com');
+
+/*PROPIETARIO*/
+insert into PROPIETARIO values(1,'estalidn', 'Mendez', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into PROPIETARIO values(2, 'Junior', 'Mendoza', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into PROPIETARIO values(3, 'Abel', 'Mendoza', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into PROPIETARIO values(4, 'Bryan', 'Cruz', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into PROPIETARIO values(5, 'jasson', 'Mendoza', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into PROPIETARIO values(6, 'Freddy', 'Cruz', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into PROPIETARIO values(7, 'Leixer', 'Mendoza', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into PROPIETARIO values(8, 'Roger', 'Cruz', '12306656', '09989842', 'Jmendoza@gmail.com');
+
+/*PLAZA*/
+insert into PLAZA values(1,1,1,'Plaza Verduras',101, 'piso 1');
+insert into PLAZA values(2,1,1,'Plaza Verduras',102, 'piso 1');
+insert into PLAZA values(3,1,2,'Plaza Verduras',102, 'piso 1');
+insert into PLAZA values(4,1,3,'Plaza Carnes',103, 'piso 2');
+insert into PLAZA values(5,1,3,'Plaza Carnes',101, 'piso 2');
+insert into PLAZA values(6,1,4,'Plaza Carnes',104, 'piso 2');
+insert into PLAZA values(7,1,5,'Plaza Plasticos',105, 'piso 1');
+insert into PLAZA values(8,1,7,'Plaza de marisqueria',106, 'piso 1');
+insert into PLAZA values(9,1,8,'Plaza de marisqueria',107, 'piso 1');
+
+
+/*ARRENDATARIO*/
+insert into ARRENDATARIO values(1,'Julio', 'Mera', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into ARRENDATARIO values(2,'Jose', 'Mendoza', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into ARRENDATARIO values(3,'Julia', 'flores', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into ARRENDATARIO values(4,'juan', 'Mendoza', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into ARRENDATARIO values(5,'Camilo', 'Delgado', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into ARRENDATARIO values(6,'Maria', 'Mendoza', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into ARRENDATARIO values(7,'Pedro', 'Escobar', '12306656', '09989842', 'Jmendoza@gmail.com');
+
+/*ARRIENDO*/
+insert into ARRIENDO values(1,1,1,'10/07/2020','20/07/2021', 150);
+insert into ARRIENDO values(2,2,1,'16/07/2020','16/07/2021', 180);
+insert into ARRIENDO values(3,3,2,'12/07/2020','12/07/2021', 190);
+insert into ARRIENDO values(4,3,2,'13/07/2020','13/07/2021', 160);
+insert into ARRIENDO values(5,4,3,'13/07/2020','13/07/2021', 160);
+
+/*CLIENTE*/
+insert into CLIENTE values(1,'Julio', 'Mendoza', '12306656', '09989842', 'Jmendoza@gmail.com');
+insert into CLIENTE values(2,'Maria', 'Mero', '12306446', '099836647', 'Mmero@gmail.com');
+insert into CLIENTE values(3,'Ana', 'Muentes', '12344846', '099866442', 'Amuentes@gmail.com');
+insert into CLIENTE values(4,'Eliceo', 'Alava', '12446846', '099888442', 'Ealava@gmail.com');
+insert into CLIENTE values(5,'Jose', 'Delgado', '12666846', '099877492', 'jDelgado@gmail.com');
+insert into CLIENTE values(6,'Leonel', 'Delgado', '12666845', '099877342', 'LDelgado@gmail.com');
+insert into CLIENTE values(7,'Bryan', 'Delgado', '12611856', '099877222', 'BDelgado@gmail.com');
+insert into CLIENTE values(8,'Diego', 'Delgado', '126622846', '099857242', 'DDelgado@gmail.com');
+insert into CLIENTE values(9,'Roberto', 'Delgado', '12556846', '099822442', 'RDelgado@gmail.com');
+
+/*VENTA*/
+insert into VENTA values(1,3,2,'10/04/2019', 2, 0.24, 2.24);
+insert into VENTA values(1,3,2,'10/04/2019', 2, 0.24, 2.24);
+insert into VENTA values(1,3,2,'10/04/2019', 4, 0.48, 4.48);
+insert into VENTA values(1,3,2,'10/04/2019', 8, 0.96, 8.96);
+
+/*PRODUCTO*/
+insert into PRODUCTO values(1,3,'MANZANA', 0.10, 100);
+insert into PRODUCTO values(2,3,'PERA', 0.20, 50);
+insert into PRODUCTO values(2,3,'Cebolla', 1, 50);
+insert into PRODUCTO values(2,3,'Pescado', 8, 50);
+
+
+/*PRODUCTO_VENTA*/
+insert into PRODUCTO_VENTA values(1,1,10,1);
+insert into PRODUCTO_VENTA values(2,1,5,1);
+insert into PRODUCTO_VENTA values(2,1,4,1);
+insert into PRODUCTO_VENTA values(2,1,2,1);
+
+
+/*PROVEEDOR*/
+insert into PROVEEDOR values(1,'Roberto', 'jaramijo',  '099822753', 'RPrado@gmail.com');
+insert into PROVEEDOR values(2,'Wilmer', 'Montecristi, '0998224642', 'WMoncayo@gmail.com');
+insert into PROVEEDOR values(3,'Javier', 'Manta', '099821592', 'Jarteaga@gmail.com');
+insert into PROVEEDOR values(3,'Helen', 'santana',  '099822694', 'HSantana@gmail.com');
+insert into PROVEEDOR values(3,'Melanie', 'Manta', '0998224642', 'MBello@gmail.com');
+
+/*COMPRA*/
+insert into COMPRA values(1,2,1,'15/05/2021',2 ,0.24 ,2.24);
+insert into COMPRA values(1,2,1,'15/05/2021',2 ,0.48 ,4.48);
+insert into COMPRA values(1,2,1,'15/05/2021',2 ,0.96 ,8.96);
+
+/*COMPRA_PRODUCTO*/
+insert into COMPRA_PRODUCTO values(1,1,200,20);
+insert into COMPRA_PRODUCTO values(1,1,300,30);
+insert into COMPRA_PRODUCTO values(1,1,250,20);
+
+/*SERVICIO*/
+insert into SERVICIO values(1, 4, "Servicio de guardiania");
+insert into SERVICIO values(2, 5, "Refrigeracion");
+insert into SERVICIO values(3, 6, "Servicio de Limpieza");
+
+/*PLAZA SERVICIO*/
+insert into PLAZA_SERVICIO values(1,1,3,300);
+insert into PLAZA_SERVICIO values(1,3,2,200);
+insert into PLAZA_SERVICIO values(2,5,6,300);
+insert into PLAZA_SERVICIO values(2,4,1,50);
