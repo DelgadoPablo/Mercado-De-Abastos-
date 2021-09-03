@@ -1,0 +1,21 @@
+select *from miembro
+
+create function SP_Test() returns Trigger 
+as
+$$
+begin 
+
+insert into "miembro" values (old.id_cargo, old.id_directiva);
+
+return new;
+End
+$$
+language plpgsql;
+
+Create trigger  Tr_Update before update on miembro
+for each row 
+execute procedure SP_Test();
+
+update miembro set 
+nombre_miembro = 'Julio'
+apellido_miembro ='Mero'
